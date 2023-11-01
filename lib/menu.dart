@@ -18,9 +18,11 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Colors.indigo,
       ),
       body: SingleChildScrollView(
+        // Widget wrapper yang dapat discroll
         child: Padding(
           padding: const EdgeInsets.all(10.0), // set padding dari halaman
           child: Column(
+            // Widget untuk menampilkan children secara vertikal
             children: <Widget>[
               const Padding(
                 padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -33,7 +35,9 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              // Grid layout
               GridView.count(
+                // Container pada card
                 primary: true,
                 padding: const EdgeInsets.all(20),
                 crossAxisSpacing: 10,
@@ -41,6 +45,7 @@ class MyHomePage extends StatelessWidget {
                 crossAxisCount: 3,
                 shrinkWrap: true,
                 children: items.map((ShopItem item) {
+                  // Iterasi untuk setiap item
                   return ShopCard(item);
                 }).toList(),
               )
@@ -69,13 +74,16 @@ class ShopCard extends StatelessWidget {
     return Material(
       color: Colors.indigo,
       child: InkWell(
+        // Area responsive terhadap sentuhan
         onTap: () {
+          // Memunculkan SnackBar ketika diklik
           ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(SnackBar(
                   content: Text("Kamu telah menekan tombol ${item.name}!")));
         },
         child: Container(
+          // Container untuk menyimpan Icon dan Text
           padding: const EdgeInsets.all(8),
           child: Center(
             child: Column(
